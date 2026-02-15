@@ -68,6 +68,7 @@ This repository contains:
 ## 📺 YouTube Channel
 
 Search: **The Hidden Engineer**
+📺 YouTube: https://youtube.com/@TheHiddenEngineers
 
 New videos uploaded regularly.
 
