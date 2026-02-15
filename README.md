@@ -1,4 +1,4 @@
-# 🚀 Hidden Engineer – DSA Journey
+# 🚀 The Hidden Engineers – Structured DSA roadmap for placements. C++ & Python implementations with clean logic and interview focus.
 
 Welcome to the official Data Structures & Algorithms repository for the Hidden Engineer YouTube series.
 
