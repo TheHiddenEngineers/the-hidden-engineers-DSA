@@ -1,0 +1,76 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+/*
+DAY 7 – BINARY SEARCH ON ANSWER
+Problems Covered:
+1. Floor Square Root
+2. Allocate Books
+Time Complexity:
+- Square Root: O(log N)
+- Allocate Books: O(N log N)
+*/
+
+// 1️⃣ Floor Square Root
+long long floorSqrt(long long n) {
+    long long low = 0, high = n;
+    long long ans = 0;
+
+    while (low <= high) {
+        long long mid = low + (high - low) / 2;
+
+        if (mid <= n / mid) {
+            ans = mid;
+            low = mid + 1;
+        } else {
+            high = mid - 1;
+        }
+    }
+    return ans;
+}
+
+// 2️⃣ Allocate Books
+bool isPossible(vector<int>& books, int students, int maxPages) {
+    int count = 1, pages = 0;
+
+    for (int book : books) {
+        if (book > maxPages) return false;
+
+        if (pages + book > maxPages) {
+            count++;
+            pages = book;
+        } else {
+            pages += book;
+        }
+    }
+    return count <= students;
+}
+
+int allocateBooks(vector<int>& books, int students) {
+    if (students > books.size()) return -1;
+
+    int low = *max_element(books.begin(), books.end());
+    int high = accumulate(books.begin(), books.end(), 0);
+    int ans = -1;
+
+    while (low <= high) {
+        int mid = low + (high - low) / 2;
+
+        if (isPossible(books, students, mid)) {
+            ans = mid;
+            high = mid - 1;
+        } else {
+            low = mid + 1;
+        }
+    }
+    return ans;
+}
+
+int main() {
+    cout << "Floor sqrt of 27: " << floorSqrt(27) << endl;
+
+    vector<int> books = {12, 34, 67, 90};
+    cout << "Allocate Books: " << allocateBooks(books, 2) << endl;
+
+    return 0;
+}
